@@ -12,3 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a {
+
+  color: #fff2d8;
+  text-decoration: none;
+}
+
+a:hover {
+
+  color: #f51e34;
+
+}
+
+.anime-theme {
+  
+  background-color: #000000;
+  border: 1px solid #f51e34;
+  color: #fff2d8;
+
+}

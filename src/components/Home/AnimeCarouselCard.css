@@ -1,0 +1,34 @@
+div.anime-carousel-card {
+
+    color: #000000;
+    font-weight: bold;
+    height: 400px;
+    text-align: center;
+    width: 225px;
+
+}
+
+div.anime-carousel-card:hover > .overlay {
+
+    background-color: black;
+
+}
+
+div.anime-carousel-card:hover img {
+
+    border: 5px solid #f51e34;
+    opacity: 0.8;
+
+}
+
+div.anime-carousel-card:hover .anime-name {
+
+    color: #f51e34;
+    
+}
+
+div.anime-carousel-card div.anime-name {
+
+    height: 50px;
+
+}
