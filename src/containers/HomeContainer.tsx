@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Home } from '../components/Home/Home';
-import { GoToAnimeAction } from '../actions/AnimeActions';
+import { GoToAnimeAction, AnimeLoadedSuccessAction } from '../actions/AnimeActions';
 import { HomeContainerProps } from '../interfaces/HomeContainerProps';
 import { JikanService } from '../services/Jikan';
 
@@ -13,11 +13,13 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
 
         jikan.getUserCompletedAnime()
             .then((resp: any) => {
-                console.log(resp.anime)
+                const anime: any[] = resp.anime;
+                this.props.dispatch({ ...new AnimeLoadedSuccessAction({ anime, loadedType: "completed" }) });
             });
         jikan.getUserWatchingAnime().
             then((resp: any) => {
-                console.log(resp.anime)
+                const anime: any[] = resp.anime;
+                this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "inProgress" }));
             });
     }
 
@@ -42,5 +44,5 @@ const mapDispatchToProps = (dispatch: Function) => ({
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    // mapDispatchToProps
 )(HomeContainer);

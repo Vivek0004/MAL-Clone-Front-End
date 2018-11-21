@@ -1,10 +1,10 @@
 import React, { Component} from 'react';
 import './Home.css';
-import { HomeContainerProps } from '../../interfaces/HomeContainerProps';
+import { HomeProps } from '../../interfaces/HomeProps';
 import { AnimeCarouselComponent } from './AnimeCarousel';
 import { RecommendedAnimeComponent } from './RecommendedAnime';
 
-export class Home extends Component<HomeContainerProps, {}> {
+export class Home extends Component<HomeProps, {}> {
  
     public render(): JSX.Element {
 

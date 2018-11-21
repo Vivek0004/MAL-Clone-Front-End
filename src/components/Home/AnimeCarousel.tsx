@@ -11,7 +11,7 @@ interface IAnimeCarouselComponentProps {
 export class AnimeCarouselComponent extends Component<IAnimeCarouselComponentProps> {
 
     public render(): JSX.Element {
-        console.log(this.props.animes)
+
         const animeItems = this.props.animes.map(obj => {
 
             return (

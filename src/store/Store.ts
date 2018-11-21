@@ -1,5 +1,9 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import AnimeListApp from '../reducers/RootReducer';
 
-const Store = createStore(AnimeListApp);
+const customMiddleware = (store: any) => (next: any) => (action: any) => {
+    next({ ...action })
+};
+const Store = createStore(AnimeListApp, applyMiddleware(customMiddleware));
+
 export default Store;
