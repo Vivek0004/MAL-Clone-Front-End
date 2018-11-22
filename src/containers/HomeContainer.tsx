@@ -8,19 +8,21 @@ import { JikanService } from '../services/Jikan';
 class HomeContainer extends Component<HomeContainerProps, {}> {
 
     public componentDidMount(): void {
+        // temp fix for preventing API call when store already has data
+        if (!this.props.inProgressAnime.length && !this.props.completedAnime.length) {
+            const jikan = new JikanService();
 
-        const jikan = new JikanService();
-
-        jikan.getUserCompletedAnime()
-            .then((resp: any) => {
-                const anime: any[] = resp.anime;
-                this.props.dispatch({ ...new AnimeLoadedSuccessAction({ anime, loadedType: "completed" }) });
-            });
-        jikan.getUserWatchingAnime().
-            then((resp: any) => {
-                const anime: any[] = resp.anime;
-                this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "inProgress" }));
-            });
+            jikan.getUserCompletedAnime()
+                .then((resp: any) => {
+                    const anime: any[] = resp.anime;
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "completed" }));
+                });
+            jikan.getUserWatchingAnime().
+                then((resp: any) => {
+                    const anime: any[] = resp.anime;
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "inProgress" }));
+                });
+        }
     }
 
     public render(): JSX.Element {
@@ -32,6 +34,7 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
             />
         );
     }
+
 }
 
 const mapStateToProps = (state: any) => ({
@@ -42,7 +45,7 @@ const mapDispatchToProps = (dispatch: Function) => ({
     GoToAnime: (id: string) => dispatch(new GoToAnimeAction(id))
 });
 
-export default connect(
+export const HomeContainerComponent = connect(
     mapStateToProps,
     // mapDispatchToProps
 )(HomeContainer);

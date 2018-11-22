@@ -18,6 +18,15 @@ export class AnimeLoadedSuccessAction implements Action {
     }
 }
 
+export class AnimeInformationLoadedSuccessAction implements Action {
+    public type: string = AnimeActionTypes.ANIME_INFORMATION_LOADED_SUCCESS;
+    public payload: any;
+
+    constructor(payload: { information: any }) {
+        this.payload = payload;
+    }
+}
+
 export class GoToAnimeAction implements Action {
     public type: string = AnimeActionTypes.GO_TO_ANIME;
     

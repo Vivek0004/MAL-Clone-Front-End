@@ -10,16 +10,17 @@ import { Settings } from '../components/Settings/Settings';
 import { SignIn } from '../components/SignIn/SignIn';
 import { AnimeInformation } from '../components/AnimeInformation/AnimeInformation';
 
-import HomeContainer from './HomeContainer';
+import { HomeContainerComponent } from './HomeContainer';
+import { AnimeInformationContainerComponent } from './AnimeInformationContainer';
 
 class App extends Component {
 
-  render() {
+  public render(): JSX.Element {
     return (
         <div className="App">
           <Header />
-          <Route path="/" exact component={HomeContainer} />
-          <Route path="/anime/:id/:name" component={AnimeInformation} />
+          <Route path="/" exact component={HomeContainerComponent} />
+          <Route path="/anime/:id/:name" component={AnimeInformationContainerComponent} />
           <Route path="/profile" component={Profile} />
           <Route path="/settings" component={Settings} />
           <Route path="/sign-out" component={SignIn} />

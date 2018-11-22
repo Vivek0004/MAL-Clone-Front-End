@@ -16,4 +16,9 @@ export class JikanService {
 
         return await this.jikan.loadUser('itsnick320o', 'animelist', 'watching');
     }
+
+    public getAnimeInformation(id: number): Promise<any> {
+
+        return this.jikan.loadAnime(id);
+    }
 } 

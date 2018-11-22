@@ -5,7 +5,8 @@ export interface AnimeState {
 
     completedAnime: any[],
     inProgressAnime: any[],
-    recommendedAnime: any[]
+    recommendedAnime: any[],
+    currentAnimeInformation: any
 
 }
 
@@ -13,7 +14,8 @@ export const initialState: AnimeState = {
 
     completedAnime: [],
     inProgressAnime: [],
-    recommendedAnime: []
+    recommendedAnime: [],
+    currentAnimeInformation: {}
 
 };
 
@@ -28,7 +30,7 @@ export function Anime(state: AnimeState = initialState, action: any): any {
 
             if (animeType === "completed") {
 
-                const completedAnime = [...state.completedAnime, ...loadedAnime];console.log(state.completedAnime, loadedAnime)
+                const completedAnime = [...state.completedAnime, ...loadedAnime];
                 return { ...state, completedAnime };
 
             } else if (animeType === "inProgress") {
@@ -42,6 +44,12 @@ export function Anime(state: AnimeState = initialState, action: any): any {
                 return { ...state, anime };
             }
 
+        }
+
+        case aat.ANIME_INFORMATION_LOADED_SUCCESS: {
+
+            const currentAnimeInformation: any = action.payload.information;
+            return { ...state, currentAnimeInformation };
         }
 
         default:
