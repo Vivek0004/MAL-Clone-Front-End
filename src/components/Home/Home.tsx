@@ -10,7 +10,8 @@ export class Home extends Component<HomeProps, {}> {
 
         return (
             <div className="home-container">
-                <AnimeCarouselComponent title="Watching Animes" animes={this.props.inProgressAnime} />
+                <AnimeCarouselComponent title="In Progress Animes" animes={this.props.inProgressAnime} />
+                <AnimeCarouselComponent title="Plan To Watch Aniems" animes={[]} />
                 <AnimeCarouselComponent title="Completed Animes" animes={this.props.completedAnime} />
                 <RecommendedAnimeComponent />
             </div>

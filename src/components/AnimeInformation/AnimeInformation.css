@@ -1,0 +1,53 @@
+div.anime-information {
+    border: 1px solid #ebebeb;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+div.anime-information h2.title {
+    flex-basis: 100%;
+}
+
+div.anime-information div.container {
+    align-items: flex-start;
+    border: 0px solid #ebebeb;
+    border-width: 1px 0;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
+    padding: 0 100px;
+}
+
+.content-container {
+    border: 1px solid #ebebeb;
+    height: 100%;
+    padding: 10px;
+    text-align: left;
+}
+
+.content-container .related-anime {
+    padding: 0;
+}
+
+.information-container {
+    border: 1px solid #ebebeb;
+    padding: 10px;
+}
+
+.related-anime .related-anime-category {
+    display: inline;
+
+}
+
+.related-anime li {
+    display: inline;
+    margin: 2px;
+}
+
+.section-header {
+    border-bottom: 1px solid #f51e34;
+    margin: 10px 0;
+    text-align: left;
+}

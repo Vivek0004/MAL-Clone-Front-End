@@ -11,10 +11,10 @@ export class Header extends Component {
             <div className="header anime-theme">
                 
                 <ul className="main-header-buttons">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/profile">Profile</Link></li>
-                    <li><Link to="/settings">Settings</Link></li>
-                    <li><Link to="/sign-out">Sign Out</Link></li>
+                    <li><Link to="/" className="nav">Home</Link></li>
+                    <li><Link to="/profile" className="nav">Profile</Link></li>
+                    <li><Link to="/settings" className="nav">Settings</Link></li>
+                    <li><Link to="/sign-out" className="nav">Sign Out</Link></li>
                 </ul>
 
             </div>

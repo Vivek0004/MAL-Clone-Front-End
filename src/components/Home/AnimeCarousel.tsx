@@ -12,7 +12,7 @@ export class AnimeCarouselComponent extends Component<IAnimeCarouselComponentPro
 
     public render(): JSX.Element {
 
-        const animeItems = this.props.animes.map(obj => {
+        const animeItems: JSX.Element[] = this.props.animes.map(obj => {
 
             return (
                 <li key={obj.mal_id}>
@@ -26,7 +26,7 @@ export class AnimeCarouselComponent extends Component<IAnimeCarouselComponentPro
             <div>
                 <h2 className="title">{this.props.title}</h2>
                 <ul className="anime-carousel">
-                    {animeItems}
+                    {animeItems.length ? animeItems : "No animes under this category."}
                 </ul>
             </div>
         )

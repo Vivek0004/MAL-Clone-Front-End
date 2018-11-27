@@ -14,21 +14,48 @@ code {
 }
 
 a {
-
-  color: #fff2d8;
   text-decoration: none;
 }
 
-a:hover {
+a.nav {
+  color: #fff2d8;
+  cursor: pointer;
+}
 
+a.nav:hover {
   color: #f51e34;
+}
 
+a.bold-pink {
+  color: #f51e34;
+  font-weight: bold;
+}
+
+a.bold-pink:hover {
+  color: #c4bbaa;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
 }
 
 .anime-theme {
-  
   background-color: #000000;
   border: 1px solid #f51e34;
   color: #fff2d8;
+}
 
+.bold {
+  color: #979084;
+  font-weight: bold;
+}
+
+.title {
+  background-color: #fff2d8;
+  color: #f51e34;
+  margin: 0;
+  padding: 20px 100px;
+  text-align: left;
 }

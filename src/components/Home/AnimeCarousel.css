@@ -1,15 +1,10 @@
 ul.anime-carousel {
-
-    list-style: none;
     text-align: left;
-
 }
 
 ul.anime-carousel li {
-
     display: inline-block;
     margin: 10px;
     vertical-align: top;
-    
 }
 
