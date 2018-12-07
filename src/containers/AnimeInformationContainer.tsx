@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { JikanService } from '../services/Jikan';
 import { AnimeInformation } from '../components/AnimeInformation/AnimeInformation';
 import { RouteComponentProps } from 'react-router-dom';
-import { AnimeInformationLoadedSuccessAction } from '../actions/AnimeActions';
+import { AnimeInformationLoadedSuccessAction } from '../store/actions/AnimeActions';
 import { AnimeInformationContainerProps } from '../interfaces/AnimeInformationProps';
 import { connect } from 'react-redux';
 

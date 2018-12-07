@@ -1,5 +1,8 @@
 ul.anime-carousel {
-    text-align: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 ul.anime-carousel li {

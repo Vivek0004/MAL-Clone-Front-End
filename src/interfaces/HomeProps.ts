@@ -1,4 +1,7 @@
 export interface HomeProps {
-    completedAnime: any[],
-    inProgressAnime: any[]
+    completedAnime: any[];
+    droppedAnime: any[];
+    inProgressAnime: any[];
+    onHoldAnime: any[];
+    planToWatchAnime: any[];
 }

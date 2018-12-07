@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Home } from '../components/Home/Home';
-import { GoToAnimeAction, AnimeLoadedSuccessAction } from '../actions/AnimeActions';
+import { GoToAnimeAction, AnimeLoadedSuccessAction } from '../store/actions/AnimeActions';
 import { HomeContainerProps } from '../interfaces/HomeContainerProps';
 import { JikanService } from '../services/Jikan';
 
@@ -17,6 +17,21 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
                     const anime: any[] = resp.anime;
                     this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "completed" }));
                 });
+            jikan.getUserDroppedAnime()
+                .then((resp: any) => {
+                    const anime: any[] = resp.anime;
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: 'dropped' }));
+                });
+            jikan.getUserOnHoldAnime()
+                .then((resp: any) => {
+                    const anime: any[] = resp.anime;
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: 'onHold' }));
+                });
+            jikan.getUserPlanToWatchAnime()
+                .then((resp: any) => {
+                    const anime: any[] = resp.anime;
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: 'planToWatch' }));
+                });
             jikan.getUserWatchingAnime().
                 then((resp: any) => {
                     const anime: any[] = resp.anime;
@@ -31,6 +46,9 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
             <Home
                 inProgressAnime={this.props.inProgressAnime}
                 completedAnime={this.props.completedAnime}
+                droppedAnime={this.props.droppedAnime}
+                onHoldAnime={this.props.onHoldAnime}
+                planToWatchAnime={this.props.planToWatchAnime}
             />
         );
     }

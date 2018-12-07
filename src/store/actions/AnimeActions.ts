@@ -1,5 +1,5 @@
 import { AnimeActionTypes } from '../actionTypes/AnimeActionTypes';
-import { Action } from '../interfaces/Action';
+import { Action } from '../../interfaces/Action';
 
 export class AnimeLoadingAction implements Action {
     public type: string = AnimeActionTypes.ANIME_LOADING;

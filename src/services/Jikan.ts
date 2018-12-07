@@ -7,9 +7,29 @@ export class JikanService {
         this.jikan = Jikan;
     }
 
+    public getAnimeInformation(id: number): Promise<any> {
+
+        return this.jikan.loadAnime(id);
+    }
+
     public async getUserCompletedAnime(): Promise<any> {
 
         return await this.jikan.loadUser('itsnick320o', 'animelist', 'completed');
+    }
+
+    public getUserDroppedAnime(): Promise<any> {
+
+        return this.jikan.loadUser('itsnick320o', 'animelist', 'dropped');
+    }
+
+    public getUserOnHoldAnime(): Promise<any> {
+
+        return this.jikan.loadUser('itsnick320o', 'animelist', 'onhold');
+    }
+
+    public getUserPlanToWatchAnime(): Promise<any> {
+
+        return this.jikan.loadUser('itsnick320o', 'animelist', 'plantowatch');
     }
 
     public async getUserWatchingAnime(): Promise<any> {
@@ -17,8 +37,4 @@ export class JikanService {
         return await this.jikan.loadUser('itsnick320o', 'animelist', 'watching');
     }
 
-    public getAnimeInformation(id: number): Promise<any> {
-
-        return this.jikan.loadAnime(id);
-    }
 } 

@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore } from 'redux';
-import AnimeListApp from '../reducers/RootReducer';
+import AnimeListApp from './reducers/RootReducer';
 
 const customMiddleware = (store: any) => (next: any) => (action: any) => {
     next({ ...action })
