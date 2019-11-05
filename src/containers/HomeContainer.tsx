@@ -8,6 +8,28 @@ import { JikanService } from '../services/Jikan';
 class HomeContainer extends Component<HomeContainerProps, {}> {
 
     public componentDidMount(): void {
+        this.loadAnimes();
+    }
+
+    public render(): JSX.Element {
+
+        return (
+            <Home
+                inProgressAnime={this.props.inProgressAnime}
+                completedAnime={this.props.completedAnime}
+                droppedAnime={this.props.droppedAnime}
+                onHoldAnime={this.props.onHoldAnime}
+                planToWatchAnime={this.props.planToWatchAnime}
+                isLoadingInProgressAnime={this.props.isLoadingInProgressAnime}
+                isLoadingCompletedAnime={this.props.isLoadingCompletedAnime}
+                isLoadingDroppedAnime={this.props.isLoadingDroppedAnime}
+                isLoadingOnHoldAnime={this.props.isLoadingDroppedAnime}
+                isLoadingPlanToWatchAnime={this.props.isLoadingPlanToWatchAnime}
+            />
+        );
+    }
+
+    private async loadAnimes(): Promise<void> {
         // temp fix for preventing API call when store already has data
         if (!this.props.inProgressAnime.length && !this.props.completedAnime.length) {
             const jikan = new JikanService();
@@ -15,7 +37,7 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
             jikan.getUserCompletedAnime()
                 .then((resp: any) => {
                     const anime: any[] = resp.anime;
-                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "completed" }));
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: 'completed' }));
                 });
             jikan.getUserDroppedAnime()
                 .then((resp: any) => {
@@ -35,22 +57,9 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
             jikan.getUserWatchingAnime().
                 then((resp: any) => {
                     const anime: any[] = resp.anime;
-                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: "inProgress" }));
+                    this.props.dispatch(new AnimeLoadedSuccessAction({ anime, loadedType: 'inProgress' }));
                 });
         }
-    }
-
-    public render(): JSX.Element {
-
-        return (
-            <Home
-                inProgressAnime={this.props.inProgressAnime}
-                completedAnime={this.props.completedAnime}
-                droppedAnime={this.props.droppedAnime}
-                onHoldAnime={this.props.onHoldAnime}
-                planToWatchAnime={this.props.planToWatchAnime}
-            />
-        );
     }
 
 }

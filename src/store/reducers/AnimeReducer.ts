@@ -1,20 +1,30 @@
 import { AnimeActionTypes as aat } from '../actionTypes/AnimeActionTypes';
-import { AnimeLoadedSuccessAction } from '../actions/AnimeActions';
+import { AnimeLoadedSuccessAction, AnimeWatchingCategories } from '../actions/AnimeActions';
 
 export interface AnimeState {
 
-    completedAnime: any[],
-    droppedAnime: any[],
-    inProgressAnime: any[],
-    onHoldAnime: any[],
-    planToWatchAnime: any[],
-    recommendedAnime: any[],
-    currentAnimeInformation: any
+    isLoadingCompletedAnime: boolean;
+    isLoadingDroppedAnime: boolean;
+    isLoadingInProgressAnime: boolean;
+    isLoadingOnHoldAnime: boolean;
+    isLoadingPlanToWatchAnime: boolean;
+    completedAnime: any[];
+    droppedAnime: any[];
+    inProgressAnime: any[];
+    onHoldAnime: any[];
+    planToWatchAnime: any[];
+    recommendedAnime: any[];
+    currentAnimeInformation: any;
 
 }
 
 export const initialState: AnimeState = {
 
+    isLoadingCompletedAnime: false,
+    isLoadingDroppedAnime: false,
+    isLoadingInProgressAnime: false,
+    isLoadingOnHoldAnime: false,
+    isLoadingPlanToWatchAnime: false,
     completedAnime: [],
     droppedAnime: [],
     inProgressAnime: [],
@@ -31,38 +41,25 @@ export function Anime(state: AnimeState = initialState, action: any): any {
 
         case aat.ANIME_LOADED_SUCCESS: {
 
-            const animeType: string = action.payload.loadedType;
+            const animeType: AnimeWatchingCategories = action.payload.loadedType;
             const loadedAnime: any[] = action.payload.anime;
 
-            if (animeType === "completed") {
-
-                const completedAnime = [...state.completedAnime, ...loadedAnime];
-                return { ...state, completedAnime };
-
-            } else if (animeType === "dropped") {
-
-                const droppedAnime = [ ...state.droppedAnime, ...loadedAnime ];
-                return { ...state, droppedAnime };
-
-            } else if (animeType === "inProgress") {
-
-                const inProgressAnime = [...state.inProgressAnime, ...loadedAnime];
-                return { ...state, inProgressAnime };
-
-            } else if (animeType === "onHold") {
-
-                const onHoldAnime = [ ...state.onHoldAnime, ...loadedAnime ];
-                return { ...state, onHoldAnime };
-
-            } else if (animeType === "planToWatch") {
-
-                const planToWatchAnime = [ ...state.planToWatchAnime, ...loadedAnime ];
-                return { ...state, planToWatchAnime };
-                
-            } else if (animeType === "recommended") {
-
-                const anime = [...state.recommendedAnime, ...loadedAnime];
-                return { ...state, anime };
+            switch (animeType) {
+                case 'completed':
+                    const completedAnime = [...state.completedAnime, ...loadedAnime];
+                    return { ...state, completedAnime };
+                case 'dropped':
+                    const droppedAnime = [...state.droppedAnime, ...loadedAnime];
+                    return { ...state, droppedAnime };
+                case 'inProgress':
+                    const inProgressAnime = [...state.inProgressAnime, ...loadedAnime];
+                    return { ...state, inProgressAnime };
+                case 'onHold':
+                    const onHoldAnime = [...state.onHoldAnime, ...loadedAnime];
+                    return { ...state, onHoldAnime };
+                case 'planToWatch':
+                    const planToWatchAnime = [...state.planToWatchAnime, ...loadedAnime];
+                    return { ...state, planToWatchAnime };
             }
 
         }

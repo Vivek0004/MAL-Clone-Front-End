@@ -6,6 +6,7 @@ import { AnimeCarouselCard } from './AnimeCarouselCard';
 interface IAnimeCarouselComponentProps {
     title: string,
     animes: any[]
+    isLoading: boolean;
 }
 
 export class AnimeCarouselComponent extends Component<IAnimeCarouselComponentProps> {
