@@ -6,8 +6,7 @@ export type AnimeWatchingCategories = 'completed' | 'dropped' | 'inProgress' | '
 export class AnimeLoadingAction implements Action {
     public type: string = AnimeActionTypes.ANIME_LOADING;
 
-    constructor(public isLoading: boolean) {
-
+    constructor(private payload: { type: AnimeWatchingCategories }) {
     }
 }
 

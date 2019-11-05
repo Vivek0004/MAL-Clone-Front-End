@@ -39,6 +39,23 @@ export function Anime(state: AnimeState = initialState, action: any): any {
 
     switch (action.type) {
 
+        case aat.ANIME_LOADING: {
+            const type: AnimeWatchingCategories = action.payload.type;
+
+            switch (type) {
+                case 'completed':
+                    return { ...state, isLoadingCompletedAnime: true };
+                case 'dropped':
+                    return { ...state, isLoadingDroppedAnime: true };
+                case 'inProgress':
+                    return { ...state, isLoadingInProgressAnime: true };
+                case 'onHold':
+                    return { ...state, isLoadingOnHoldAnime: true };
+                case 'planToWatch':
+                    return { ...state, isLoadingPlanToWatchAnime: true };
+            }
+        }
+
         case aat.ANIME_LOADED_SUCCESS: {
 
             const animeType: AnimeWatchingCategories = action.payload.loadedType;
@@ -47,19 +64,19 @@ export function Anime(state: AnimeState = initialState, action: any): any {
             switch (animeType) {
                 case 'completed':
                     const completedAnime = [...state.completedAnime, ...loadedAnime];
-                    return { ...state, completedAnime };
+                    return { ...state, completedAnime, isLoadingCompletedAnime: false };
                 case 'dropped':
                     const droppedAnime = [...state.droppedAnime, ...loadedAnime];
-                    return { ...state, droppedAnime };
+                    return { ...state, droppedAnime, isLoadingDroppedAnime: false };
                 case 'inProgress':
                     const inProgressAnime = [...state.inProgressAnime, ...loadedAnime];
-                    return { ...state, inProgressAnime };
+                    return { ...state, inProgressAnime, isLoadingInProgressAnime: false };
                 case 'onHold':
                     const onHoldAnime = [...state.onHoldAnime, ...loadedAnime];
-                    return { ...state, onHoldAnime };
+                    return { ...state, onHoldAnime, isLoadingOnHoldAnime: false };
                 case 'planToWatch':
                     const planToWatchAnime = [...state.planToWatchAnime, ...loadedAnime];
-                    return { ...state, planToWatchAnime };
+                    return { ...state, planToWatchAnime, isLoadingPlanToWatchAnime: false };
             }
 
         }

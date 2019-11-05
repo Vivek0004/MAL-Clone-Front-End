@@ -23,11 +23,13 @@ export class AnimeCarouselComponent extends Component<IAnimeCarouselComponentPro
 
         });
 
+        const body = this.props.isLoading ? 'Loading' : animeItems.length ? animeItems : "No animes under this category.";
+
         return (
             <div>
                 <h2 className="title">{this.props.title}</h2>
                 <ul className="anime-carousel">
-                    {animeItems.length ? animeItems : "No animes under this category."}
+                    {body}
                 </ul>
             </div>
         )

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Home } from '../components/Home/Home';
-import { GoToAnimeAction, AnimeLoadedSuccessAction } from '../store/actions/AnimeActions';
+import { GoToAnimeAction, AnimeLoadedSuccessAction, AnimeLoadingAction } from '../store/actions/AnimeActions';
 import { HomeContainerProps } from '../interfaces/HomeContainerProps';
 import { JikanService } from '../services/Jikan';
 
@@ -33,6 +33,12 @@ class HomeContainer extends Component<HomeContainerProps, {}> {
         // temp fix for preventing API call when store already has data
         if (!this.props.inProgressAnime.length && !this.props.completedAnime.length) {
             const jikan = new JikanService();
+
+            this.props.dispatch(new AnimeLoadingAction({ type: 'completed' }));
+            this.props.dispatch(new AnimeLoadingAction({ type: 'dropped' }));
+            this.props.dispatch(new AnimeLoadingAction({ type: 'inProgress' }));
+            this.props.dispatch(new AnimeLoadingAction({ type: 'onHold' }));
+            this.props.dispatch(new AnimeLoadingAction({ type: 'planToWatch' }));
 
             jikan.getUserCompletedAnime()
                 .then((resp: any) => {
